@@ -27,10 +27,6 @@ Number_of_hours_overtime = int(print("Enter the number of hours overtime:"))
 The_number_of_absences_hours = int(print("Enter the number of absences (in hour):"))
 Number_of_hours_of_honorarium = int(print("Enter the number of hours of honorarium"))
 Number_of_hours_in_tardiness = int(print("Enter the number of tardiness (in hours):"))
-Withholding_tax = float(print("Enter the value of the withholding tax:"))
-SSS_Contribution = float(print("Enter the value of SSS contribution:"))
-HDMF_Contribution = float(print("Enter the value of HDMF Contribution"))
-Philhealth_Contribution = float(print("Enter the value of Philhealth COntribution:"))
 
 #We cam mow compute and process the needed data
 Basic_pay = Rate_per_hour*Number_of_hours_per_payday
