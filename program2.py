@@ -21,6 +21,23 @@ class Employee_Info:
         print("Cut-Off Date: ", self.salary_cut_off)
 
 class Employee_Salary:
+    def __init__(self):
+        self.sss_contribution = 0.00
+        self.hdmf_contribution = 100.00
+        self.philhealth_contribution = 0.00
+        self.tax_contribution = 0.00
+        self.emp_absences = 0.00
+        self.emp_tardiness = 0.00
+        self.total_deduction = 0.00
+        self.emp_rate_per_hour = 0.00
+        self.emp_num_of_hours_per_payday = 0.00
+        self.hour_overtime = 0.00
+        self.honorarium_pay = 0.00
+        self.emp_num_of_absences = 0.00
+        self.tardiness_deduction = 0.00
+        self.tardiness_num_hours = 0
+        self.emp_gross_earnings = 0.00
+        self.emp_net_income = 0.00
     def get_basic_pay(self, emp_rate_per_hour, emp_num_of_hours_per_payday):
         self.basic_pay =emp_rate_per_hour * emp_num_of_hours_per_payday
         return self.basic_pay
