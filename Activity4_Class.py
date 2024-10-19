@@ -66,8 +66,9 @@ class AssessmentOfFees:
         self.technology_fee = float(input("Enter technology fee:"))
         self.test_papers = float(input("Enter test papers fee:")) ""
 
-    def get_TuitionFeeLecture(self):
-        
+    def get_AssessmentAmount(self):
+        self.assessment_amount = self.cultural_fee + self.athletic + self.audio_visual_library +self.sg +self.cultural_fee + self.energy_cost_aircon + self.guidance +self.insurance_fee +self.lms +self
+
 schoolassessment = SchoolAssessment()
 schoolassessment.input_subjectinfo()
 schoolassessment.display_subjectinfo()
