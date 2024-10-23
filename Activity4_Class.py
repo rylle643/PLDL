@@ -8,20 +8,13 @@ class SchoolAssessment:
         self.student_number = ""
         self.academic_year = ""
         self.current_day = ""
-        self.section = ""
-        self.subject = []
-        self.units = ""
 
-    def get_student_data(self, student_name, course, student_number, academic_year, current_day, section, subject, units):
+    def get_student_data(self, student_name, course, student_number, academic_year, current_day):
         self.student_name = student_name
         self.course = course
         self.student_number = student_number
         self.academic_year = academic_year
         self.current_day = current_day
-        self.section = section
-        self.subject = subject
-        self.units = units
-        self.totalunits=0
 
     def display_basic_data(self):
         print("Name: ", self.student_name)
@@ -29,12 +22,17 @@ class SchoolAssessment:
         print("Student Number: ", self.student_number)
         print("Academic Year: ", self.academic_year)
 
-    def display_subjectinfo(self):
-        print(f"{'Section':<15}{'Subject':<25}{'Units':<5}")
-        print("=" * 60)
-        for info in self.subjects:
-            print(f"{info['section']:<15}{info['subject']:<25}{info['units']:<5}")
-        print(f"\n{'Total Units:':<40}{self.totalunits:<5}")
+class SubjectInfo:
+    def __init__(self):
+        self.section = ""
+        self.subject = []
+        self.units = ""
+
+    def get_subjectinfo(self, section, subject, units):
+        self.section = section
+        self.subject = subject
+        self.units = units
+        self.totalunits = 0
 
     def input_subjectinfo(self):
         self.subjects = []
@@ -48,14 +46,22 @@ class SchoolAssessment:
             self.subjects.append({"subject":subject, "section":section, "units":units})
             self.totalunits += units
         return self.subjects
+
     def get_total_units(self):
         return self.totalunits
+
+    def display_subjectinfo(self):
+        print(f"{'Section':<15}{'Subject':<25}{'Units':<5}")
+        print("=" * 60)
+        for info in self.subjects:
+            print(f"{info['section']:<15}{info['subject']:<25}{info['units']:<5}")
+        print(f"\n{'Total Units:':<40}{self.totalunits:<5}")
 
 class AssessmentOfFees:
     def __init__(self):
         self.tuition_fee = 0
         self.total_units = 0
-        self.chronicle = float(input("Enter the ADU Chronicle fee: "))
+        self.chronicle = float(input("Enter the Chronicle fee: "))
         self.athletic = float(input("Enter the Athletic fee: "))
         self.audio_visual_library = float(input("Enter the Audio-Visual Library fee: "))
         self.sg = float(input("Enter student government fee: "))
@@ -106,11 +112,11 @@ class AssessmentOfFees:
         print("-" * 45)
         print("\t\t\tASSESSMENT OF FEES")
         print("-" * 45)
-        print(f"{'TUITION FEE LECTURE':<30}{self.tuition_fee:>10,.2f}")
-        print(f"{'ADU CHRONICLE':<30}{self.chronicle:>10,.2f}")
+        print(f"{'TUITION FEE':<30}{self.tuition_fee:>10,.2f}")
+        print(f"{'CHRONICLE':<30}{self.chronicle:>10,.2f}")
         print(f"{'ATHLETIC':<30}{self.athletic:>10,.2f}")
         print(f"{'AUDIO-VISUAL LIBRARY':<30}{self.audio_visual_library:>10,.2f}")
-        print(f"{'AUSG':<30}{self.sg:>10,.2f}")
+        print(f"{'SG':<30}{self.sg:>10,.2f}")
         print(f"{'CULTURAL FEE':<30}{self.cultural_fee:>10,.2f}")
         print(f"{'ENERGY COST, AIRCON CLASSROOM':<30}{self.energy_cost_aircon:>10,.2f}")
         print(f"{'GUIDANCE':<30}{self.guidance:>10,.2f}")
@@ -133,10 +139,21 @@ class AssessmentOfFees:
 
 
 
-#schoolassessment = SchoolAssessment()
-#schoolassessment.input_subjectinfo()
-#schoolassessment.display_subjectinfo()
+subject = SubjectInfo()
+subject.input_subjectinfo()
+subject.display_subjectinfo()
 
-assesmentamount = AssessmentOfFees()
-assesmentamount.get_assessment_amount()
-assesmentamount.display_assessment()
+
+
+#subject = SubjectInfo()
+#.input_subjectinfo()
+#totalunits = subject.get_total_units()
+#assessment = AssessmentOfFees()
+#assessment.set_total_units(totalunits)
+#assessment.get_assessment_amount()
+#assessment.display_assessment()
+
+
+
+
+
