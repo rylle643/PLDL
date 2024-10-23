@@ -21,6 +21,7 @@ class SchoolAssessment:
         self.section = section
         self.subject = subject
         self.units = units
+        self.totalunits=0
 
     def display_basic_data(self):
         print("Name: ", self.student_name)
@@ -29,46 +30,113 @@ class SchoolAssessment:
         print("Academic Year: ", self.academic_year)
 
     def display_subjectinfo(self):
-        print("Section \tSubject \tUnits")
-        print("=" * 35)
+        print(f"{'Section':<15}{'Subject':<25}{'Units':<5}")
+        print("=" * 60)
         for info in self.subjects:
-            print(f"{info['section']} \t\t{info['subject']} \t\t{info['units']}")
+            print(f"{info['section']:<15}{info['subject']:<25}{info['units']:<5}")
+        print(f"\n{'Total Units:':<40}{self.totalunits:<5}")
 
     def input_subjectinfo(self):
         self.subjects = []
+        self.totalunits=0
         while True:
             subject = input("Enter a subject (type 'done' to finish): ")
             if subject.lower() == 'done':
                 break
             section = input("Enter section: ")
-            units = input("Enter units: ")
+            units = int(input("Enter units: "))
             self.subjects.append({"subject":subject, "section":section, "units":units})
+            self.totalunits += units
         return self.subjects
+    def get_total_units(self):
+        return self.totalunits
 
 class AssessmentOfFees:
-
     def __init__(self):
-        self.chronicle = float(input("Enter the chronicle fee: "))
-        self.athletic = float(input("Enter atheletic fee:"))
-        self.audio_visual_library = float(input("Enter the audio-visual library fee: "))
-        self.sg = float(input("Enter student government fee:"))
-        self.cultural_fee = float(input("Enter Cultural fee fee:"))
-        self.energy_cost_aircon = float(input("Enter energy cost aircon classroom fee:"))
-        self.guidance = float(input("Enter guidance fee:"))
-        self.insurance_fee = float(input("Enter insurance fee fee:"))
-        self.lms = float(input("Enter learning management system fee:"))
-        self.library_fee = float(input("Enter library fee:"))
-        self.medical_dental = float(input("Enter medical and dental fee:"))
-        self.registration = float(input("Enter registration fee:"))
-        self.rso = float(input("Enter RSO fee:"))
-        self.student_activity = float(input("Enter student activities fee:"))
-        self.student_nurturane = float(input("Enter student nurturance fee:"))
-        self.technology_fee = float(input("Enter technology fee:"))
-        self.test_papers = float(input("Enter test papers fee:")) ""
+        self.tuition_fee = 0
+        self.total_units = 0
+        self.chronicle = float(input("Enter the ADU Chronicle fee: "))
+        self.athletic = float(input("Enter the Athletic fee: "))
+        self.audio_visual_library = float(input("Enter the Audio-Visual Library fee: "))
+        self.sg = float(input("Enter student government fee: "))
+        self.cultural_fee = float(input("Enter Cultural fee: "))
+        self.energy_cost_aircon = float(input("Enter Energy Cost Aircon Classroom fee: "))
+        self.guidance = float(input("Enter Guidance fee: "))
+        self.insurance_fee = float(input("Enter Insurance fee: "))
+        self.lms = float(input("Enter Learning Management System fee: "))
+        self.library_fee = float(input("Enter Library fee: "))
+        self.medical_dental = float(input("Enter Medical and Dental fee: "))
+        self.registration = float(input("Enter Registration fee: "))
+        self.rso = float(input("Enter RSO fee: "))
+        self.student_activity = float(input("Enter Student Activities fee: "))
+        self.student_nurturance = float(input("Enter Student Nurturance fee: "))
+        self.technology_fee = float(input("Enter Technology fee: "))
+        self.test_papers = float(input("Enter Test Papers fee: "))
+        self.downpayment = float(input("Enter downpayment: "))
 
-    def get_AssessmentAmount(self):
-        self.assessment_amount = self.cultural_fee + self.athletic + self.audio_visual_library +self.sg +self.cultural_fee + self.energy_cost_aircon + self.guidance +self.insurance_fee +self.lms +self
+    def set_total_units(self, total_units):
+        self.total_units = total_units
 
-schoolassessment = SchoolAssessment()
-schoolassessment.input_subjectinfo()
-schoolassessment.display_subjectinfo()
+    def get_assessment_amount(self):
+        self.tuition_fee = self.total_units * 1551
+        self.assessment_amount = (
+                self.tuition_fee +
+                self.chronicle +
+                self.athletic +
+                self.audio_visual_library +
+                self.sg +
+                self.cultural_fee +
+                self.energy_cost_aircon +
+                self.guidance +
+                self.insurance_fee +
+                self.lms +
+                self.library_fee +
+                self.medical_dental +
+                self.registration +
+                self.rso +
+                self.student_activity +
+                self.student_nurturance +
+                self.technology_fee +
+                self.test_papers
+        )
+        return self.assessment_amount
+
+    def display_assessment(self):
+        print("\n")
+        print("-" * 45)
+        print("\t\t\tASSESSMENT OF FEES")
+        print("-" * 45)
+        print(f"{'TUITION FEE LECTURE':<30}{self.tuition_fee:>10,.2f}")
+        print(f"{'ADU CHRONICLE':<30}{self.chronicle:>10,.2f}")
+        print(f"{'ATHLETIC':<30}{self.athletic:>10,.2f}")
+        print(f"{'AUDIO-VISUAL LIBRARY':<30}{self.audio_visual_library:>10,.2f}")
+        print(f"{'AUSG':<30}{self.sg:>10,.2f}")
+        print(f"{'CULTURAL FEE':<30}{self.cultural_fee:>10,.2f}")
+        print(f"{'ENERGY COST, AIRCON CLASSROOM':<30}{self.energy_cost_aircon:>10,.2f}")
+        print(f"{'GUIDANCE':<30}{self.guidance:>10,.2f}")
+        print(f"{'INSURANCE FEE':<30}{self.insurance_fee:>10,.2f}")
+        print(f"{'LEARNING MANAGEMENT SYSTEM':<30}{self.lms:>10,.2f}")
+        print(f"{'LIBRARY FEE':<30}{self.library_fee:>10,.2f}")
+        print(f"{'MEDICAL AND DENTAL':<30}{self.medical_dental:>10,.2f}")
+        print(f"{'REGISTRATION':<30}{self.registration:>10,.2f}")
+        print(f"{'RSO':<30}{self.rso:>10,.2f}")
+        print(f"{'STUDENT ACTIVITIES FEE':<30}{self.student_activity:>10,.2f}")
+        print(f"{'STUDENT NURTURANCE FEE':<30}{self.student_nurturance:>10,.2f}")
+        print(f"{'TECHNOLOGY FEE':<30}{self.technology_fee:>10,.2f}")
+        print(f"{'TEST PAPERS':<30}{self.test_papers:>10,.2f}\n")
+        print("-" * 45)
+        print(f"{'Assessment Amt.':<30}{self.get_assessment_amount():>10,.2f}")
+        print(f"{'Downpayment:':<30}{self.downpayment:>10,.2f}")
+        print(f"{'Total Due:':<30}{self.get_assessment_amount() - self.downpayment:>10,.2f}")
+        print("-" * 45)
+
+
+
+
+#schoolassessment = SchoolAssessment()
+#schoolassessment.input_subjectinfo()
+#schoolassessment.display_subjectinfo()
+
+assesmentamount = AssessmentOfFees()
+assesmentamount.get_assessment_amount()
+assesmentamount.display_assessment()
