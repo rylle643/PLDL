@@ -139,11 +139,9 @@ class AssessmentOfFees:
 
 
 
-subject = SubjectInfo()
-subject.input_subjectinfo()
-subject.display_subjectinfo()
-
-
+#subject = SubjectInfo()
+#subject.input_subjectinfo()
+#subject.display_subjectinfo()
 
 #subject = SubjectInfo()
 #.input_subjectinfo()
