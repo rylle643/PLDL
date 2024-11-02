@@ -79,6 +79,9 @@ class AssessmentOfFees:
         self.technology_fee = float(input("Enter Technology fee: "))
         self.test_papers = float(input("Enter Test Papers fee: "))
         self.downpayment = float(input("Enter downpayment: "))
+        self.prelims = float
+        self.midterms = float
+        self.finals = float
 
     def set_total_units(self, total_units):
         self.total_units = total_units
@@ -133,10 +136,30 @@ class AssessmentOfFees:
         print("-" * 45)
         print(f"{'Assessment Amt.':<30}{self.get_assessment_amount():>10,.2f}")
         print(f"{'Downpayment:':<30}{self.downpayment:>10,.2f}")
+        print("-" * 45)
         print(f"{'Total Due:':<30}{self.get_assessment_amount() - self.downpayment:>10,.2f}")
         print("-" * 45)
 
 
+    def get_Schedule_of_Payment(self):
+        remaining_balance = self.get_assessment_amount() - self.downpayment
+        self.prelims = remaining_balance / 3
+        self.midterms = self.prelims
+        self.finals = self.prelims
+
+    def display_schedule(self):
+        print("\n" + "=" * 45)
+        print(f"|{'Schedule of Payment':^43}|")
+        print(f"|{'of outstanding balance':^43}|")
+        print(f"|{'after downpayment prior to:':^43}|")
+        print(f"| {'PRELIMS':<28}{self.prelims:>13,.2f} |")
+        print(f"| {'MIDTERMS':<28}{self.midterms:>13,.2f} |")
+        print(f"| {'FINALS':<28}{self.finals:>13,.2f} |")
+        print("=" * 45)
+        print("*There will be a 6% surcharge p.a. for late payment.")
+        print("-" * 45)
+        print("THIS IS A TEMPORARY ASSESSMENT")
+        print("-" * 45)
 
 
 #subject = SubjectInfo()
@@ -144,12 +167,14 @@ class AssessmentOfFees:
 #subject.display_subjectinfo()
 
 #subject = SubjectInfo()
-#.input_subjectinfo()
+#subject.input_subjectinfo()
 #totalunits = subject.get_total_units()
 #assessment = AssessmentOfFees()
 #assessment.set_total_units(totalunits)
 #assessment.get_assessment_amount()
 #assessment.display_assessment()
+#assessment.get_Schedule_of_Payment()
+#assessment.display_schedule()
 
 
 
