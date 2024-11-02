@@ -19,14 +19,15 @@ class SchoolAssessment:
 
 
     def display_basic_data(self):
-        print("-" * 60)
-        print(f"{'OFFICE OF THE REGISTRAR':>60}")
+        print("-" * 120)
+        print(f"{'OFFICE OF THE REGISTRAR':>120}")
         print("\n")
-        print(f"{'CERTIFICATE OF ENROLLMENT':^60}")
-        print(f"{self.semester} Semester, {self.academic_year}".center(60))
-        print(f"{'NAME':<10}: {self.student_name:<20}    {'STUDENT NO.':<15}: {self.student_number}")
-        print(f"{'COURSE':<10}: {self.course:<20}    {'ACAD. YEAR':<15}: {self.academic_year}")
-        print("\n" + "=" * 60)
+        print(f"{'CERTIFICATE OF ENROLLMENT':^120}")
+        print(f"{self.semester} Semester, {self.academic_year}".center(120))
+        print("\n")
+        print(f"\t\t\t\t{'NAME':<10}: {self.student_name:<50}    {'STUDENT NO.':<15}: {self.student_number}")
+        print(f"\t\t\t\t{'COURSE':<10}: {self.course:<50}    {'ACAD. YEAR':<15}: {self.academic_year}")
+        print("\n" + "=" * 120)
 
 class SubjectInfo:
     def __init__(self):
@@ -173,14 +174,14 @@ class AssessmentOfFees:
 #subject.display_subjectinfo()
 
 
-
+assessment = SchoolAssessment()
+assessment.get_student_data()
+assessment.display_basic_data()
 
 subject = SubjectInfo()
 subject.input_subjectinfo()
 totalunits = subject.get_total_units()
-assessment = SchoolAssessment()
-assessment.get_student_data()
-assessment.display_basic_data()
+
 assessment = AssessmentOfFees()
 assessment.set_total_units(totalunits)
 assessment.get_assessment_amount()
