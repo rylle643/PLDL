@@ -9,18 +9,24 @@ class SchoolAssessment:
         self.academic_year = ""
         self.current_day = ""
 
-    def get_student_data(self, student_name, course, student_number, academic_year, current_day):
-        self.student_name = student_name
-        self.course = course
-        self.student_number = student_number
-        self.academic_year = academic_year
-        self.current_day = current_day
+    def get_student_data(self):
+        self.student_name = input("Enter student's name: ")
+        self.course = input("Enter course: ")
+        self.student_number = input("Enter student number: ")
+        self.academic_year = input("Enter academic year (e.g., 2022-2023): ")
+        self.semester = input("Enter semester (e.g., 1st, 2nd): ")
+        self.current_day = input("Enter year level (e.g., Second Year): ")
+
 
     def display_basic_data(self):
-        print("Name: ", self.student_name)
-        print("Course: ", self.course)
-        print("Student Number: ", self.student_number)
-        print("Academic Year: ", self.academic_year)
+        print("-" * 60)
+        print(f"{'OFFICE OF THE REGISTRAR':>60}")
+        print("\n")
+        print(f"{'CERTIFICATE OF ENROLLMENT':^60}")
+        print(f"{self.semester} Semester, {self.academic_year}".center(60))
+        print(f"{'NAME':<10}: {self.student_name:<20}    {'STUDENT NO.':<15}: {self.student_number}")
+        print(f"{'COURSE':<10}: {self.course:<20}    {'ACAD. YEAR':<15}: {self.academic_year}")
+        print("\n" + "=" * 60)
 
 class SubjectInfo:
     def __init__(self):
@@ -138,7 +144,7 @@ class AssessmentOfFees:
         print(f"{'Downpayment:':<30}{self.downpayment:>10,.2f}")
         print("-" * 45)
         print(f"{'Total Due:':<30}{self.get_assessment_amount() - self.downpayment:>10,.2f}")
-        print("-" * 45)
+
 
 
     def get_Schedule_of_Payment(self):
@@ -148,14 +154,14 @@ class AssessmentOfFees:
         self.finals = self.prelims
 
     def display_schedule(self):
-        print("\n" + "=" * 45)
+        print("\n" + "-" * 45)
         print(f"|{'Schedule of Payment':^43}|")
         print(f"|{'of outstanding balance':^43}|")
         print(f"|{'after downpayment prior to:':^43}|")
         print(f"| {'PRELIMS':<28}{self.prelims:>13,.2f} |")
         print(f"| {'MIDTERMS':<28}{self.midterms:>13,.2f} |")
         print(f"| {'FINALS':<28}{self.finals:>13,.2f} |")
-        print("=" * 45)
+        print("-" * 45)
         print("*There will be a 6% surcharge p.a. for late payment.")
         print("-" * 45)
         print("THIS IS A TEMPORARY ASSESSMENT")
@@ -166,15 +172,21 @@ class AssessmentOfFees:
 #subject.input_subjectinfo()
 #subject.display_subjectinfo()
 
-#subject = SubjectInfo()
-#subject.input_subjectinfo()
-#totalunits = subject.get_total_units()
-#assessment = AssessmentOfFees()
-#assessment.set_total_units(totalunits)
-#assessment.get_assessment_amount()
-#assessment.display_assessment()
-#assessment.get_Schedule_of_Payment()
-#assessment.display_schedule()
+
+
+
+subject = SubjectInfo()
+subject.input_subjectinfo()
+totalunits = subject.get_total_units()
+assessment = SchoolAssessment()
+assessment.get_student_data()
+assessment.display_basic_data()
+assessment = AssessmentOfFees()
+assessment.set_total_units(totalunits)
+assessment.get_assessment_amount()
+assessment.display_assessment()
+assessment.get_Schedule_of_Payment()
+assessment.display_schedule()
 
 
 
