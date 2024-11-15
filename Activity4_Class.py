@@ -64,7 +64,7 @@ class AssessmentOfFees:
         self.student_activity = float(input("Enter student activities fee:"))
         self.student_nurturane = float(input("Enter student nurturance fee:"))
         self.technology_fee = float(input("Enter technology fee:"))
-        self.test_papers = float(input("Enter test papers fee:")) ""
+        self.test_papers = float(input("Enter test papers fee:"))
 
     def get_AssessmentAmount(self):
         self.assessment_amount = self.cultural_fee + self.athletic + self.audio_visual_library +self.sg +self.cultural_fee + self.energy_cost_aircon + self.guidance +self.insurance_fee +self.lms +self
