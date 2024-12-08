@@ -7,7 +7,7 @@ def inandout():
     print(f"{name}, you will turn 100 in the year {year_turn_100}.")
 
 
-    
+
 def pandn():
     number = float(input("Enter a number: "))
     if number > 0:
