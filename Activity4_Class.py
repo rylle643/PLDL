@@ -59,7 +59,7 @@ class AssessmentOfFees:
         self.lms = float(input("Enter learning management system fee:"))
         self.library_fee = float(input("Enter library fee:"))
         self.medical_dental = float(input("Enter medical and dental fee:"))
-        self.registration = float(input("Enter registration fee:"))
+        self.registration = float(input("Enter useraccount fee:"))
         self.rso = float(input("Enter RSO fee:"))
         self.student_activity = float(input("Enter student activities fee:"))
         self.student_nurturane = float(input("Enter student nurturance fee:"))
