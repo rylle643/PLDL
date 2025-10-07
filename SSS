@@ -122,3 +122,23 @@ else if (grossincome >= 34750)
     sss_contrib = 1750.00m / 2;
 
 SSSContributionTxt.Text = sss_contrib.ToString();
+
+        private decimal ComputeSSS(decimal grossIncome)
+        {
+            decimal sss_contrib;
+
+            if (grossIncome < 5250)
+                sss_contrib = 250.00m / 2;
+            else
+            {
+                int bracket = (int)((grossIncome - 5250) / 500) + 1;
+                decimal contribution = 250.00m + (bracket * 25.00m);
+                sss_contrib = contribution / 2;
+            }
+
+            SSSContributionTxt.Text = sss_contrib.ToString();
+            return sss_contrib;
+        }
+
+code sa gross income button:
+SSSContributionTxt.Text = sss.ToString("n2");
